@@ -75,6 +75,38 @@ function indexAt(node, collection, linkedList){
     return count
 }
 
-function insertNodeAt(idx, name, linkedList, collection){
+function insertNodeAt(idx, name, linkedList, collection){    
+    let count = 0
+    let currentNode = collection[linkedList]
+
+    while (count < idx) {
+        if (count === (idx - 1)) {
+            let nextNode = currentNode.next
+            collection[name].next = nextNode
+            currentNode.next = name
+            count += 1
+        }
+        else {
+            currentNode = collection[currentNode.next]
+            count += 1
+        }
+    }
+}
+
+function deleteNodeAt(idx, linkedList, collection) {
+    let count = 0
+    let currentNode = collection[linkedList]
+
+    while (count < idx) {
+        if (count === (idx - 1)) {
+           let nextNode = collection[currentNode.next].next
+           currentNode.next = nextNode
+           count += 1
+        }
+        else {
+            currentNode = collection[currentNode.next]
+            count += 1
+        }
+    }
 
 }
